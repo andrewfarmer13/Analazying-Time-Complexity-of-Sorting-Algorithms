@@ -12,8 +12,8 @@ from matplotlib import pyplot as plt
 from random import randint as ran
 
 unsorted1 = [0]*1000
-unsorted2 = [0] * 10000
-unsorted3 = [0] * 30000
+unsorted2 = [0] * 2000
+unsorted3 = [0] * 2500
 
 
 def generate(lists):
@@ -30,11 +30,11 @@ def main(unsorted1, unsorted2, unsorted3):
     unsorted2 = generate(unsorted2)
     unsorted3 = generate(unsorted3)
     # dictionary to hold number of inputs and the time it took
-    bubbleTime = []
-    mergeTime = []
-    combTime = []
-    quickTime = []
-    sizes = [1000, 10000, 30000]
+    bubbleTime = [0]
+    mergeTime = [0]
+    combTime = [0]
+    quickTime = [0]
+    sizes = [0,1000, 2000, 2500]
    # print("Unsorted: "+ str(unsorted))
 
     # Test Bubble Sort
@@ -48,12 +48,12 @@ def main(unsorted1, unsorted2, unsorted3):
     bubbleSort(unsorted2)
     time_end = time.perf_counter_ns()
     bubbleTime.append(time_end-time_start)
-    print("Sorted: 10000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     bubbleSort(unsorted3)
     time_end = time.perf_counter_ns()
     bubbleTime.append(time_end-time_start)
-    print("Sorted: 30000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
 
     # Test Merge Sort
     print("\nMerge Sort:")
@@ -66,12 +66,12 @@ def main(unsorted1, unsorted2, unsorted3):
     merge_sort(unsorted2)
     time_end = time.perf_counter_ns()
     mergeTime.append(time_end-time_start)
-    print("Sorted: 10000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     merge_sort(unsorted3)
     time_end = time.perf_counter_ns()
     mergeTime.append(time_end-time_start)
-    print("Sorted: 30000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
 
     # Test Comb Sort
     print("\nComb Sort:")
@@ -84,12 +84,12 @@ def main(unsorted1, unsorted2, unsorted3):
     combSort(unsorted2)
     time_end = time.perf_counter_ns()
     combTime.append(time_end-time_start)
-    print("Sorted: 10000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     combSort(unsorted3)
     time_end = time.perf_counter_ns()
     combTime.append(time_end-time_start)
-    print("Sorted: 30000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
     
     # Test Quick Sort
     n = len(unsorted1)
@@ -104,13 +104,13 @@ def main(unsorted1, unsorted2, unsorted3):
     quickSort(unsorted2, 0, n-1)
     time_end = time.perf_counter_ns()
     quickTime.append(time_end-time_start)
-    print("Sorted: 10000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     n = len(unsorted3)
     time_start = time.perf_counter_ns()
     quickSort(unsorted3,0,n-1)
     time_end = time.perf_counter_ns()
     quickTime.append(time_end-time_start)
-    print("Sorted: 100000, Time(in nanoseconds): " + str(time_end-time_start))
+    print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
 
     # graph,messing around with graphing
     plt.style.use('seaborn-whitegrid')
@@ -118,7 +118,7 @@ def main(unsorted1, unsorted2, unsorted3):
     ax = plt.axes()
     plt.xlabel("Number of Inputs")
     plt.ylabel("Time(s)")
-    ax.set(xlim=(0, 40000), ylim=(0, 200000000))
+    ax.set(xlim=(0, 4000), ylim=(0, 15000000))
     ax.plot(sizes, bubbleTime, color='g', label='Bubble Sort')
     ax.plot(sizes, mergeTime, color='b', label='Merge Sort')
     ax.plot(sizes, combTime, color='r', label='Comb Sort')
