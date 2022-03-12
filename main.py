@@ -11,6 +11,10 @@ import time
 from matplotlib import pyplot as plt
 from random import randint as ran
 
+# Writes to file
+f = open("data.txt", "a")
+
+
 unsorted1 = [0]*1000
 unsorted2 = [0] * 2000
 unsorted3 = [0] * 2500
@@ -39,79 +43,94 @@ def main(unsorted1, unsorted2, unsorted3):
 
     # Test Bubble Sort
     print("\nBubble Sort:")
+    f.write("\nBubble Sort:")
     time_start = time.perf_counter_ns()
     bubbleSort(unsorted1)
     time_end = time.perf_counter_ns()
     bubbleTime.append(time_end-time_start)
     print("Sorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     bubbleSort(unsorted2)
     time_end = time.perf_counter_ns()
     bubbleTime.append(time_end-time_start)
     print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     bubbleSort(unsorted3)
     time_end = time.perf_counter_ns()
     bubbleTime.append(time_end-time_start)
     print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
 
     # Test Merge Sort
     print("\nMerge Sort:")
+    f.write("\nMerge Sort:")
     time_start = time.perf_counter_ns()
     merge_sort(unsorted1)
     time_end = time.perf_counter_ns()
     mergeTime.append(time_end-time_start)
     print("Sorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     merge_sort(unsorted2)
     time_end = time.perf_counter_ns()
     mergeTime.append(time_end-time_start)
     print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     merge_sort(unsorted3)
     time_end = time.perf_counter_ns()
     mergeTime.append(time_end-time_start)
     print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
 
     # Test Comb Sort
     print("\nComb Sort:")
+    f.write("\nComb Sort:")
     time_start = time.perf_counter_ns()
     combSort(unsorted1)
     time_end = time.perf_counter_ns()
     combTime.append(time_end-time_start)
     print("Sorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     combSort(unsorted2)
     time_end = time.perf_counter_ns()
     combTime.append(time_end-time_start)
     print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     combSort(unsorted3)
     time_end = time.perf_counter_ns()
     combTime.append(time_end-time_start)
     print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
     
     # Test Quick Sort
     n = len(unsorted1)
     print("\nQuick Sort:")
+    f.write("\nQuick Sort:")
     time_start = time.perf_counter_ns()
     quickSort(unsorted1, 0, n-1)
     time_end = time.perf_counter_ns()
     quickTime.append(time_end-time_start)
     n = len(unsorted2)
     print("Sorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 1000, Time(in nanoseconds): " + str(time_end-time_start))
     time_start = time.perf_counter_ns()
     quickSort(unsorted2, 0, n-1)
     time_end = time.perf_counter_ns()
     quickTime.append(time_end-time_start)
     print("Sorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
+    f.write("\nSorted: 2000, Time(in nanoseconds): " + str(time_end-time_start))
     n = len(unsorted3)
     time_start = time.perf_counter_ns()
     quickSort(unsorted3,0,n-1)
     time_end = time.perf_counter_ns()
     quickTime.append(time_end-time_start)
     print("Sorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
-
+    f.write("\nSorted: 2500, Time(in nanoseconds): " + str(time_end-time_start))
     # graph,messing around with graphing
     plt.style.use('seaborn-whitegrid')
     fig = plt.figure()
@@ -125,6 +144,9 @@ def main(unsorted1, unsorted2, unsorted3):
     ax.plot(sizes, quickTime, color='c', label='Quick Sort')
     ax.legend()
     plt.savefig("comparison_graph.png")
+    
+    # close the read file
+    f.close()
 
 
 main(unsorted1, unsorted2, unsorted3)

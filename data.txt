@@ -1,0 +1,17 @@
+
+Bubble Sort:
+Sorted: 1000, Time(in nanoseconds): 156668700
+Sorted: 2000, Time(in nanoseconds): 557978000
+Sorted: 2500, Time(in nanoseconds): 972889600
+Merge Sort:
+Sorted: 1000, Time(in nanoseconds): 7453400
+Sorted: 2000, Time(in nanoseconds): 18856300
+Sorted: 2500, Time(in nanoseconds): 16997000
+Comb Sort:
+Sorted: 1000, Time(in nanoseconds): 4802300
+Sorted: 2000, Time(in nanoseconds): 10819800
+Sorted: 2500, Time(in nanoseconds): 14364900
+Quick Sort:
+Sorted: 1000, Time(in nanoseconds): 190226300
+Sorted: 2000, Time(in nanoseconds): 816551200
+Sorted: 2500, Time(in nanoseconds): 1381623200
